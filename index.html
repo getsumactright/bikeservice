@@ -532,32 +532,170 @@
         .d2 { transition-delay: 0.16s; }
         .d3 { transition-delay: 0.24s; }
 
-        /* ── RESPONSIVE ── */
+        /* ── HAMBURGER BUTTON ── */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .nav-hamburger span {
+            display: block;
+            height: 1.5px;
+            background: var(--ink);
+            border-radius: 2px;
+            transition: transform 0.25s, opacity 0.25s;
+            transform-origin: center;
+        }
+        /* Animate to X when open */
+        nav.menu-open .nav-hamburger span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+        nav.menu-open .nav-hamburger span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        nav.menu-open .nav-hamburger span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+        /* ── TABLET (≤ 900px) ── */
         @media (max-width: 900px) {
+            /* Nav */
+            .nav-hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 64px;
+                inset-inline: 0;
+                background: rgba(255,255,255,0.97);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                flex-direction: column;
+                align-items: stretch;
+                padding: 1rem 0 2rem;
+                border-bottom: 1px solid var(--rule);
+                z-index: 99;
+                gap: 0;
+            }
+            nav.menu-open .nav-links { display: flex; }
+            .nav-links a {
+                padding: 1rem 2rem;
+                font-size: 0.9rem;
+                border-bottom: 1px solid var(--rule);
+                letter-spacing: 0.06em;
+            }
+            .nav-links .nav-cta {
+                margin: 1rem 2rem 0;
+                padding: 1rem;
+                text-align: center;
+                background: var(--ink);
+                color: var(--white);
+                border-bottom: none;
+                border-radius: 2px;
+            }
+
+            /* Hero */
             #hero { grid-template-columns: 1fr; min-height: auto; }
-            .hero-left { padding: 4rem 1.5rem 3rem; max-width: 100%; }
-            .hero-right { min-height: 55vw; }
-            .services-header { flex-direction: column; align-items: flex-start; }
+            .hero-left { padding: 4rem 1.5rem 2.5rem; max-width: 100%; }
+            .hero-right { min-height: 60vw; }
+            .hero-meta { gap: 1.5rem; }
+
+            /* Services */
+            .services-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
             .service-row { grid-template-columns: 2rem 1fr; }
             .service-row-price { display: none; }
+
+            /* Process */
             .process-grid { grid-template-columns: 1fr; }
-            .process-step { border-right: none; border-bottom: 1px solid var(--rule); }
+            .process-step { border-right: none; border-bottom: 1px solid var(--rule); padding: 2rem 1.5rem; }
+            .process-step:last-child { border-bottom: none; }
+
+            /* Mobile repair split */
             #mobile-repair { grid-template-columns: 1fr; }
-            .mr-img { min-height: 55vw; }
+            .mr-img { min-height: 60vw; }
             .mr-content { padding: 3rem 1.5rem; }
+
+            /* Pricing */
             .pricing-intro { grid-template-columns: 1fr; gap: 1.5rem; }
             .pricing-grid { grid-template-columns: 1fr; }
+
+            /* Reviews */
             .reviews-grid { grid-template-columns: 1fr; }
+
+            /* Book */
             .book-inner { grid-template-columns: 1fr; gap: 2rem; }
-            .footer-top { flex-direction: column; }
-            nav .nav-links { display: none; }
+            .book-right .btn { width: 100%; justify-content: center; }
+
+            /* Footer */
+            .footer-top { flex-direction: column; gap: 2rem; }
+            .footer-cols { gap: 2.5rem; }
+        }
+
+        /* ── MOBILE (≤ 480px) ── */
+        @media (max-width: 480px) {
+            /* Base spacing */
+            .wrap { padding: 0 1.25rem; }
+            .section { padding: 4rem 0; }
+
+            /* Nav */
+            nav { padding: 0 1.25rem; }
+
+            /* Hero */
+            .hero-left { padding: 3rem 1.25rem 2rem; }
+            .hero-title { font-size: clamp(2.5rem, 11vw, 3.5rem); }
+            .body-lg { font-size: 0.95rem; }
+            .hero-meta { flex-wrap: wrap; gap: 1.25rem; padding-top: 2rem; }
+            .meta-item .num { font-size: 1.25rem; }
+            .hero-right { min-height: 75vw; }
+
+            /* Buttons — full width on mobile */
+            .hero-left > div { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; padding: 16px 24px; font-size: 0.82rem; }
+
+            /* Intro strip */
+            #intro { padding: 1.25rem 0; }
+            .intro-row { gap: 0.75rem; }
+            .intro-pill { font-size: 0.72rem; }
+
+            /* Services */
+            .services-header { padding-bottom: 2rem; margin-bottom: 0; }
+            h2 { font-size: clamp(1.75rem, 8vw, 2.5rem); }
+            .service-row { padding: 1.5rem 0; gap: 1rem; }
+            .service-row-name { font-size: 1rem; }
+            .service-row-desc { font-size: 0.8rem; }
+
+            /* Process */
+            .step-title { font-size: 1.25rem; }
+
+            /* Mobile repair */
+            .mr-img { min-height: 80vw; }
+            .mr-content { padding: 2.5rem 1.25rem; gap: 1.25rem; }
+            .mr-content h2 { font-size: clamp(1.75rem, 8vw, 2.5rem); }
+            .check-list li { font-size: 0.82rem; }
+
+            /* Pricing */
+            .p-card { padding: 2rem 1.5rem; }
+            .p-price { font-size: 2.5rem; }
+            .pricing-grid { gap: 0; background: var(--rule); }
+            .p-card { border-bottom: 1px solid var(--rule); }
+
+            /* Reviews */
+            .r-card { padding: 2rem 1.5rem; }
+
+            /* Book */
+            #book .section { padding: 3.5rem 0; }
+
+            /* Footer */
+            .footer-cols { gap: 2rem; }
+            .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
         }
     </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
+<nav id="main-nav">
     <a href="#" class="nav-brand">
         <div class="nav-logo-img">
             <img src="images/logo.png" alt="Bike Service"/>
@@ -567,12 +705,17 @@
             <span class="nav-brand-tag">Mobile & Home Repair</span>
         </div>
     </a>
-    <div class="nav-links">
-        <a href="#services">Services</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#testimonials">Reviews</a>
-        <a href="#book" class="nav-cta">Book Now</a>
+    <div class="nav-links" id="nav-links">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#testimonials" class="nav-link">Reviews</a>
+        <a href="#book" class="nav-cta nav-link">Book Now</a>
     </div>
+    <button class="nav-hamburger" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
 </nav>
 
 <!-- HERO -->
@@ -899,28 +1042,40 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
     els.forEach(el => obs.observe(el));
 
-    // ── Hero video: smooth fade-in + autoplay resilience ──
-    const vid = document.getElementById('hero-video');
-    if (vid) {
-        // Fade in once the browser has enough data to start playing
-        const showVideo = () => vid.classList.add('playing');
-        vid.addEventListener('canplay', showVideo, { once: true });
-        vid.addEventListener('playing', showVideo, { once: true });
+    // ── Hamburger menu ──
+    const navEl    = document.getElementById('main-nav');
+    const toggle   = document.getElementById('nav-toggle');
+    const navLinks = document.getElementById('nav-links');
 
-        // If the video is already ready (cached), trigger immediately
-        if (vid.readyState >= 3) showVideo();
-
-        // Retry autoplay — some browsers need a user interaction first;
-        // this catches the case where autoplay was silently blocked.
-        const tryPlay = () => {
-            vid.play().catch(() => {
-                // Autoplay blocked — show the poster image, play on first tap
-                document.addEventListener('click', () => vid.play(), { once: true });
-                document.addEventListener('touchstart', () => vid.play(), { once: true });
-            });
-        };
-        if (vid.paused) tryPlay();
+    function openMenu() {
+        navEl.classList.add('menu-open');
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.setAttribute('aria-label', 'Close menu');
     }
+    function closeMenu() {
+        navEl.classList.remove('menu-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
+    }
+
+    toggle.addEventListener('click', () => {
+        navEl.classList.contains('menu-open') ? closeMenu() : openMenu();
+    });
+
+    // Close on any nav link tap
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    // Close when tapping outside the nav
+    document.addEventListener('click', e => {
+        if (!navEl.contains(e.target)) closeMenu();
+    });
+
+    // Close on resize back to desktop
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 900) closeMenu();
+    });
 </script>
 </body>
 </html>
