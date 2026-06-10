@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Bike Service | Mobile & Home Bicycle Repair</title>
+    <meta name="description" content="Bike Service — Mobile & Home Bicycle Repair. We come to you. Expert tune-ups, flat fixes, full overhauls. Book your service today."/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --white:   #FFFFFF;
+            --off:     #F7F7F5;
+            --light:   #EFEFED;
+            --rule:    #E4E4E2;
+            --muted:   #ABABAB;
+            --mid:     #6B6B6B;
+            --dark:    #2A2A2A;
+            --ink:     #111111;
+            --amber:   #B8833A;
+            --amber-bg:#FDF6EC;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--white);
+            color: var(--dark);
+            -webkit-font-smoothing: antialiased;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        img { display: block; max-width: 100%; }
+        a { color: inherit; text-decoration: none; }
+
+        /* ── LAYOUT ── */
+        .wrap { max-width: 1160px; margin: 0 auto; padding: 0 2rem; }
+        .section { padding: 7rem 0; }
+
+        /* ── TYPE HELPERS ── */
+        .label {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--amber);
+        }
+        .eyebrow { display: block; margin-bottom: 1.25rem; }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3.25rem);
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--ink);
+        }
+        h2 em { font-style: italic; color: var(--mid); }
+
+        .body-lg { font-size: 1.05rem; color: var(--mid); font-weight: 300; line-height: 1.8; max-width: 540px; }
+        .body-sm { font-size: 0.875rem; color: var(--mid); font-weight: 300; line-height: 1.75; }
+
+        /* ── BUTTONS ── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 14px 28px;
+            border-radius: 2px;
+            transition: all 0.22s;
+            cursor: pointer;
+        }
+        .btn-solid {
+            background: var(--ink);
+            color: var(--white);
+        }
+        .btn-solid:hover { background: #333; }
+
+        .btn-outline {
+            border: 1px solid var(--rule);
+            color: var(--dark);
+        }
+        .btn-outline:hover { border-color: var(--dark); }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            inset-inline: 0;
+            z-index: 100;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2.5rem;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+        }
+        .nav-logo-img {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1px solid var(--rule);
+            flex-shrink: 0;
+        }
+        .nav-logo-img img { width: 100%; height: 100%; object-fit: contain; }
+        .nav-brand-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--ink);
+            letter-spacing: 0.04em;
+        }
+        .nav-brand-tag {
+            font-size: 0.6rem;
+            color: var(--muted);
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            display: block;
+        }
+
+        .nav-links { display: flex; align-items: center; gap: 2.5rem; }
+        .nav-links a {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--mid);
+            letter-spacing: 0.06em;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--ink); }
+        .nav-links .nav-cta {
+            font-weight: 500;
+            color: var(--ink);
+            border-bottom: 1px solid var(--ink);
+            padding-bottom: 1px;
+        }
+
+        /* ── HERO ── */
+        #hero {
+            padding-top: 64px;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: stretch;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem 4rem 6rem 2.5rem;
+            max-width: 640px;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 5.5vw, 5.5rem);
+            font-weight: 400;
+            line-height: 1.05;
+            color: var(--ink);
+            margin-bottom: 1.75rem;
+        }
+        .hero-title em {
+            font-style: italic;
+            color: var(--amber);
+        }
+
+        .hero-body { margin-bottom: 2.5rem; }
+
+        .hero-meta {
+            display: flex;
+            gap: 2.5rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--rule);
+            margin-top: 1rem;
+        }
+        .meta-item .num {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--ink);
+            line-height: 1;
+        }
+        .meta-item .lbl {
+            font-size: 0.65rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        /* Hero video panel — portrait 9:16 video in landscape container */
+        .hero-right {
+            position: relative;
+            overflow: hidden;
+            background: #D8D8D5;   /* muted placeholder while video loads */
+            min-height: 500px;
+        }
+        /* Video absolutely fills the container, cropped to centre */
+        .hero-right video,
+        .hero-right img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;  /* bias slightly toward top — shows mechanic's head & bike */
+            display: block;
+            /* start transparent, fade in once playback begins */
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+        /* Fallback img always visible */
+        .hero-right img { opacity: 1; }
+        /* JS adds .playing once canplay fires */
+        .hero-right video.playing { opacity: 1; }
+        /* Very subtle light wash so video feels airy */
+        .hero-right::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(247,247,245,0.06);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* ── INTRO STRIP ── */
+        #intro {
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 2rem 0;
+        }
+        .intro-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .intro-pill {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.78rem;
+            color: var(--mid);
+            font-weight: 300;
+        }
+        .intro-pill::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--amber);
+            flex-shrink: 0;
+        }
+
+        /* ── SERVICES ── */
+        #services { background: var(--white); }
+
+        .services-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: 0;
+            gap: 2rem;
+        }
+
+        .service-list { list-style: none; }
+        .service-row {
+            display: grid;
+            grid-template-columns: 2.5rem 1fr auto;
+            align-items: start;
+            gap: 2rem;
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--rule);
+            transition: background 0.2s;
+            cursor: default;
+        }
+        .service-row:hover .service-row-name { color: var(--amber); }
+
+        .service-row-idx {
+            font-size: 0.68rem;
+            color: var(--muted);
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            padding-top: 3px;
+        }
+        .service-row-name {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--ink);
+            transition: color 0.2s;
+            margin-bottom: 0.35rem;
+        }
+        .service-row-desc { font-size: 0.83rem; color: var(--muted); font-weight: 300; line-height: 1.6; max-width: 440px; }
+        .service-row-price {
+            font-size: 0.75rem;
+            color: var(--mid);
+            text-align: right;
+            white-space: nowrap;
+            padding-top: 3px;
+        }
+
+        /* ── HOW IT WORKS ── */
+        #process { background: var(--off); }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+        .process-step {
+            padding: 3rem 2.5rem;
+            border-right: 1px solid var(--rule);
+        }
+        .process-step:last-child { border-right: none; }
+
+        .step-n {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            color: var(--muted);
+            text-transform: uppercase;
+            margin-bottom: 1.75rem;
+        }
+        .step-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--ink);
+            margin-bottom: 0.75rem;
+        }
+        .step-body { font-size: 0.85rem; color: var(--mid); font-weight: 300; line-height: 1.7; }
+
+        /* ── MOBILE SPLIT ── */
+        #mobile-repair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 560px;
+        }
+        .mr-img { overflow: hidden; }
+        .mr-img img { width: 100%; height: 100%; object-fit: cover; }
+        .mr-content {
+            padding: 5rem 4rem;
+            background: var(--off);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        .mr-content h2 { margin-bottom: 0.25rem; }
+
+        .check-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.5rem; }
+        .check-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--mid);
+            font-weight: 300;
+        }
+        .check-list li::before {
+            content: '';
+            width: 16px;
+            height: 1px;
+            background: var(--amber);
+            flex-shrink: 0;
+        }
+
+        /* ── PRICING ── */
+        #pricing { background: var(--white); }
+
+        .pricing-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            padding-bottom: 3.5rem;
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: 3.5rem;
+            align-items: end;
+        }
+        .pricing-note { font-size: 0.8rem; color: var(--muted); font-weight: 300; line-height: 1.7; max-width: 340px; }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 1px;
+            background: var(--rule);
+        }
+        .p-card {
+            background: var(--white);
+            padding: 2.5rem;
+            position: relative;
+            transition: background 0.25s;
+        }
+        .p-card:hover { background: var(--off); }
+        .p-card.featured { background: var(--amber-bg); }
+        .p-card.featured:hover { background: #faeedd; }
+
+        .p-plan { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.25rem; }
+        .p-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            color: var(--ink);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .p-price sup { font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 300; vertical-align: super; }
+        .p-desc { font-size: 0.8rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.6; }
+        .p-items { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 2rem; }
+        .p-item { font-size: 0.82rem; color: var(--mid); display: flex; align-items: center; gap: 8px; }
+        .p-item::before { content: '—'; color: var(--amber); font-size: 0.7rem; }
+
+        .p-btn {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: 1px solid var(--rule);
+            color: var(--ink);
+            transition: all 0.2s;
+        }
+        .p-btn:hover { border-color: var(--ink); }
+        .p-card.featured .p-btn { border-color: var(--amber); color: var(--amber); }
+        .p-card.featured .p-btn:hover { background: var(--amber); color: var(--white); }
+        .p-badge {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--amber);
+            font-weight: 500;
+        }
+
+        /* ── REVIEWS ── */
+        #testimonials { background: var(--off); }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 1px;
+            background: var(--rule);
+            margin-top: 3.5rem;
+        }
+        .r-card {
+            background: var(--off);
+            padding: 2.5rem;
+        }
+        .r-stars { color: var(--amber); font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 1.25rem; }
+        .r-text { font-size: 0.875rem; color: var(--mid); line-height: 1.8; font-style: italic; font-weight: 300; margin-bottom: 1.5rem; }
+        .r-name { font-size: 0.78rem; font-weight: 500; color: var(--dark); }
+        .r-sub { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+
+        /* ── BOOKING ── */
+        #book {
+            background: var(--white);
+            border-top: 1px solid var(--rule);
+        }
+        .book-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        .book-right { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+        .book-phone {
+            font-size: 0.8rem;
+            color: var(--muted);
+            padding-top: 1rem;
+            border-top: 1px solid var(--rule);
+            width: 100%;
+        }
+        .book-phone a { color: var(--dark); font-weight: 500; }
+        .book-phone a:hover { color: var(--amber); }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--off);
+            border-top: 1px solid var(--rule);
+            padding: 3rem 0 2rem;
+        }
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 3rem;
+            flex-wrap: wrap;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: 1.5rem;
+        }
+        .footer-brand { display: flex; align-items: center; gap: 10px; }
+        .footer-logo-img { width: 36px; height: 36px; border-radius: 50%; overflow: hidden; border: 1px solid var(--rule); }
+        .footer-logo-img img { width: 100%; height: 100%; object-fit: contain; }
+        .footer-brand-name { font-size: 0.85rem; font-weight: 600; color: var(--ink); }
+        .footer-brand-sub { font-size: 0.6rem; color: var(--muted); letter-spacing: 0.14em; text-transform: uppercase; display: block; }
+
+        .footer-cols { display: flex; gap: 4rem; flex-wrap: wrap; }
+        .f-col h6 { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; font-weight: 500; }
+        .f-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+        .f-col a { font-size: 0.82rem; color: var(--mid); font-weight: 300; transition: color 0.2s; }
+        .f-col a:hover { color: var(--ink); }
+
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { font-size: 0.72rem; color: var(--muted); }
+
+        /* ── REVEAL ── */
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+        .reveal.in { opacity: 1; transform: none; }
+        .d1 { transition-delay: 0.08s; }
+        .d2 { transition-delay: 0.16s; }
+        .d3 { transition-delay: 0.24s; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            #hero { grid-template-columns: 1fr; min-height: auto; }
+            .hero-left { padding: 4rem 1.5rem 3rem; max-width: 100%; }
+            .hero-right { min-height: 55vw; }
+            .services-header { flex-direction: column; align-items: flex-start; }
+            .service-row { grid-template-columns: 2rem 1fr; }
+            .service-row-price { display: none; }
+            .process-grid { grid-template-columns: 1fr; }
+            .process-step { border-right: none; border-bottom: 1px solid var(--rule); }
+            #mobile-repair { grid-template-columns: 1fr; }
+            .mr-img { min-height: 55vw; }
+            .mr-content { padding: 3rem 1.5rem; }
+            .pricing-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .reviews-grid { grid-template-columns: 1fr; }
+            .book-inner { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-top { flex-direction: column; }
+            nav .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <a href="#" class="nav-brand">
+        <div class="nav-logo-img">
+            <img src="images/logo.png" alt="Bike Service"/>
+        </div>
+        <div>
+            <span class="nav-brand-name">Bike Service</span>
+            <span class="nav-brand-tag">Mobile & Home Repair</span>
+        </div>
+    </a>
+    <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#book" class="nav-cta">Book Now</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+    <div class="hero-left">
+        <span class="label eyebrow">Mobile & Home Bicycle Repair</span>
+        <h1 class="hero-title">
+            Your bike,<br/>
+            <em>fixed at<br/>your door.</em>
+        </h1>
+        <p class="body-lg hero-body">
+            Expert repair and tune-ups brought directly to you — no drop-offs, no waiting around. Just a well-running bike, wherever you are.
+        </p>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+            <a href="#book" class="btn btn-solid">Book a Service</a>
+            <a href="#services" class="btn btn-outline">Our Services</a>
+        </div>
+        <div class="hero-meta">
+            <div class="meta-item">
+                <div class="num">500+</div>
+                <div class="lbl">Bikes Serviced</div>
+            </div>
+            <div class="meta-item">
+                <div class="num">5.0 ★</div>
+                <div class="lbl">Average Rating</div>
+            </div>
+            <div class="meta-item">
+                <div class="num">Same Day</div>
+                <div class="lbl">Availability</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-right">
+        <img src="images/hero.png" alt="Bike mechanic at work"/>
+    </div>
+</section>
+
+<!-- INTRO STRIP -->
+<div id="intro">
+    <div class="wrap">
+        <div class="intro-row">
+            <span class="intro-pill">Road & Mountain Bikes</span>
+            <span class="intro-pill">E-Bikes</span>
+            <span class="intro-pill">Kids' Bikes</span>
+            <span class="intro-pill">Flat Repairs</span>
+            <span class="intro-pill">Full Overhauls</span>
+            <span class="intro-pill">Same-Day Slots</span>
+        </div>
+    </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+    <div class="wrap">
+        <div class="services-header reveal">
+            <div>
+                <span class="label eyebrow">What We Do</span>
+                <h2>Everything your<br/>bike needs.</h2>
+            </div>
+            <p class="body-sm" style="max-width:340px;">From a quick flat fix to a full strip-down overhaul — we handle every make and model, on your schedule.</p>
+        </div>
+        <ul class="service-list">
+            <li class="service-row reveal d1">
+                <span class="service-row-idx">01</span>
+                <div>
+                    <div class="service-row-name">Tune-Up & Adjustment</div>
+                    <p class="service-row-desc">Full safety check, brake and derailleur adjustment, cable tension, chain lube, and tyre pressure. Your bike leaves riding like new.</p>
+                </div>
+                <div class="service-row-price">From $49</div>
+            </li>
+            <li class="service-row reveal d1">
+                <span class="service-row-idx">02</span>
+                <div>
+                    <div class="service-row-name">Flat Tyre Repair</div>
+                    <p class="service-row-desc">Puncture diagnosis, tube replacement or patch, rim tape inspection, and correct inflation. Back on the road in under 30 minutes.</p>
+                </div>
+                <div class="service-row-price">From $25</div>
+            </li>
+            <li class="service-row reveal d2">
+                <span class="service-row-idx">03</span>
+                <div>
+                    <div class="service-row-name">Full Overhaul</div>
+                    <p class="service-row-desc">Complete strip-down, deep clean, bearing repack, full drivetrain service, and precision reassembly. Recommended annually.</p>
+                </div>
+                <div class="service-row-price">From $199</div>
+            </li>
+            <li class="service-row reveal d2">
+                <span class="service-row-idx">04</span>
+                <div>
+                    <div class="service-row-name">Parts & Installation</div>
+                    <p class="service-row-desc">Brakes, derailleurs, handlebars, saddles, wheels — sourced and professionally installed at your location.</p>
+                </div>
+                <div class="service-row-price">Quote</div>
+            </li>
+            <li class="service-row reveal d3">
+                <span class="service-row-idx">05</span>
+                <div>
+                    <div class="service-row-name">E-Bike Service</div>
+                    <p class="service-row-desc">Electrical system check, motor inspection, battery health, firmware updates, and all standard mechanical repairs.</p>
+                </div>
+                <div class="service-row-price">From $89</div>
+            </li>
+            <li class="service-row reveal d3">
+                <span class="service-row-idx">06</span>
+                <div>
+                    <div class="service-row-name">Kids' Bikes</div>
+                    <p class="service-row-desc">Safety-focused service for children's and balance bikes — sizing, training wheel adjustment, and brake reach.</p>
+                </div>
+                <div class="service-row-price">From $35</div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="process" class="section">
+    <div class="wrap">
+        <div class="reveal" style="margin-bottom:3rem;">
+            <span class="label eyebrow">How It Works</span>
+            <h2>Three steps to<br/>a better ride.</h2>
+        </div>
+        <div class="process-grid">
+            <div class="process-step reveal d1">
+                <div class="step-n">Step 01</div>
+                <div class="step-title">Book Online</div>
+                <p class="step-body">Choose your service, pick a time slot, and enter your address. Takes less than two minutes.</p>
+            </div>
+            <div class="process-step reveal d2">
+                <div class="step-n">Step 02</div>
+                <div class="step-title">We Show Up</div>
+                <p class="step-body">Our mechanic arrives at your door, fully equipped with tools and common parts for almost any job.</p>
+            </div>
+            <div class="process-step reveal d3">
+                <div class="step-n">Step 03</div>
+                <div class="step-title">Ride Away</div>
+                <p class="step-body">We dial in your bike on the spot. Pay when done. No hidden fees. 30-day satisfaction guarantee.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MOBILE SPLIT -->
+<section id="mobile-repair">
+    <div class="mr-img">
+        <img src="images/mobile_service.png" alt="Mobile bike service mechanic arriving"/>
+    </div>
+    <div class="mr-content reveal">
+        <span class="label">Mobile Service</span>
+        <h2>Your driveway<br/>is our <em>workshop.</em></h2>
+        <p class="body-sm">We bring the full shop experience to your home, office, or trailhead. All we need is your bike and a bit of space.</p>
+        <ul class="check-list">
+            <li>Same-day and next-day slots available</li>
+            <li>All tools and common parts included</li>
+            <li>Road, MTB, gravel, and e-bikes</li>
+            <li>10+ years of certified experience</li>
+            <li>30-day guarantee on all work</li>
+        </ul>
+        <a href="#book" class="btn btn-solid" style="margin-top:0.5rem;">Schedule a Visit</a>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="section">
+    <div class="wrap">
+        <div class="pricing-intro reveal">
+            <div>
+                <span class="label eyebrow">Pricing</span>
+                <h2>Simple,<br/>transparent rates.</h2>
+            </div>
+            <p class="pricing-note">All services include a complimentary safety inspection. Parts are billed separately at cost, with no markup.</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="p-card reveal d1">
+                <div class="p-plan">Basic</div>
+                <div class="p-price"><sup>$</sup>49</div>
+                <p class="p-desc">Quick fixes and minor adjustments for a single issue.</p>
+                <ul class="p-items">
+                    <li class="p-item">Safety inspection</li>
+                    <li class="p-item">Brake or gear adjustment</li>
+                    <li class="p-item">Tyre inflation & check</li>
+                    <li class="p-item">Flat tyre repair</li>
+                </ul>
+                <a href="#book" class="p-btn">Book Now</a>
+            </div>
+            <div class="p-card featured reveal d2">
+                <div class="p-badge">Most Popular</div>
+                <div class="p-plan">Standard Tune-Up</div>
+                <div class="p-price"><sup>$</sup>89</div>
+                <p class="p-desc">Complete tune-up — recommended every 6 months for regular riders.</p>
+                <ul class="p-items">
+                    <li class="p-item">Full safety inspection</li>
+                    <li class="p-item">Brake & derailleur tuning</li>
+                    <li class="p-item">Chain clean & lube</li>
+                    <li class="p-item">Cable tension adjustment</li>
+                    <li class="p-item">Minor wheel true</li>
+                    <li class="p-item">All bolts torqued to spec</li>
+                </ul>
+                <a href="#book" class="p-btn">Book Now</a>
+            </div>
+            <div class="p-card reveal d3">
+                <div class="p-plan">Full Overhaul</div>
+                <div class="p-price"><sup>$</sup>199</div>
+                <p class="p-desc">Head-to-toe rebuild. Best for bikes not serviced in 1+ years.</p>
+                <ul class="p-items">
+                    <li class="p-item">Everything in Standard</li>
+                    <li class="p-item">Full drivetrain clean</li>
+                    <li class="p-item">Bearing repack</li>
+                    <li class="p-item">Full wheel true</li>
+                    <li class="p-item">Grip & bar tape inspection</li>
+                    <li class="p-item">Detailed service report</li>
+                </ul>
+                <a href="#book" class="p-btn">Book Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="testimonials" class="section">
+    <div class="wrap">
+        <div class="reveal">
+            <span class="label eyebrow">Reviews</span>
+            <h2>Riders love us.</h2>
+        </div>
+        <div class="reviews-grid">
+            <div class="r-card reveal d1">
+                <div class="r-stars">★★★★★</div>
+                <p class="r-text">"They showed up on time, diagnosed the issue in minutes, and had my road bike shifting perfectly within the hour. The easiest service experience I've ever had."</p>
+                <div class="r-name">Alex M.</div>
+                <div class="r-sub">Road Cyclist · Sacramento</div>
+            </div>
+            <div class="r-card reveal d2">
+                <div class="r-stars">★★★★★</div>
+                <p class="r-text">"Booked Tuesday evening, they were at my apartment Wednesday morning. My mountain bike came back riding smoother than the day I bought it."</p>
+                <div class="r-name">Jordan K.</div>
+                <div class="r-sub">MTB Rider · Elk Grove</div>
+            </div>
+            <div class="r-card reveal d3">
+                <div class="r-stars">★★★★★</div>
+                <p class="r-text">"Fixed my kid's bike in the driveway while we watched. Super friendly, explained everything, didn't charge for the small extras. We'll be back."</p>
+                <div class="r-name">Priya S.</div>
+                <div class="r-sub">Family Rider · Roseville</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BOOK -->
+<section id="book" class="section">
+    <div class="wrap">
+        <div class="book-inner">
+            <div class="reveal">
+                <span class="label eyebrow">Get Started</span>
+                <h2>Book your<br/><em>service today.</em></h2>
+                <p class="body-sm" style="margin-top:1rem;">Pick a time, share your address, and we'll handle the rest. Most bookings confirmed within the hour.</p>
+            </div>
+            <div class="book-right reveal d2">
+                <a href="mailto:hello@bikeservice.com?subject=Bike Service Booking" class="btn btn-solid" style="width:100%; justify-content:center;">Request a Booking</a>
+                <div class="book-phone">
+                    Prefer to call? &nbsp;<a href="tel:+19165550180">(916) 555-0180</a>
+                </div>
+                <div class="book-phone" style="border-top:none; padding-top:0; color:var(--muted);">
+                    Mon–Fri 7am–7pm &nbsp;·&nbsp; Sat 8am–6pm &nbsp;·&nbsp; Sun 9am–5pm
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="wrap">
+        <div class="footer-top">
+            <div>
+                <div class="footer-brand" style="margin-bottom:0.75rem;">
+                    <div class="footer-logo-img">
+                        <img src="images/logo.png" alt="Bike Service"/>
+                    </div>
+                    <div>
+                        <span class="footer-brand-name">Bike Service</span>
+                        <span class="footer-brand-sub">Mobile & Home Repair</span>
+                    </div>
+                </div>
+                <p style="font-size:0.78rem; color:var(--muted); max-width:260px; line-height:1.7;">Expert bicycle repair delivered to your door. Serving Sacramento and surrounding areas.</p>
+            </div>
+            <div class="footer-cols">
+                <div class="f-col">
+                    <h6>Services</h6>
+                    <ul>
+                        <li><a href="#services">Tune-Up</a></li>
+                        <li><a href="#services">Flat Repair</a></li>
+                        <li><a href="#services">Full Overhaul</a></li>
+                        <li><a href="#services">E-Bike</a></li>
+                        <li><a href="#services">Kids' Bikes</a></li>
+                    </ul>
+                </div>
+                <div class="f-col">
+                    <h6>Company</h6>
+                    <ul>
+                        <li><a href="#process">How It Works</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                        <li><a href="#book">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Bike Service. All Rights Reserved.</p>
+            <div style="display:flex; gap:1.5rem;">
+                <a href="#" style="font-size:0.72rem; color:var(--muted);">Privacy</a>
+                <a href="#" style="font-size:0.72rem; color:var(--muted);">Terms</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // ── Scroll reveals ──
+    const els = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+    els.forEach(el => obs.observe(el));
+
+    // ── Hero video: smooth fade-in + autoplay resilience ──
+    const vid = document.getElementById('hero-video');
+    if (vid) {
+        // Fade in once the browser has enough data to start playing
+        const showVideo = () => vid.classList.add('playing');
+        vid.addEventListener('canplay', showVideo, { once: true });
+        vid.addEventListener('playing', showVideo, { once: true });
+
+        // If the video is already ready (cached), trigger immediately
+        if (vid.readyState >= 3) showVideo();
+
+        // Retry autoplay — some browsers need a user interaction first;
+        // this catches the case where autoplay was silently blocked.
+        const tryPlay = () => {
+            vid.play().catch(() => {
+                // Autoplay blocked — show the poster image, play on first tap
+                document.addEventListener('click', () => vid.play(), { once: true });
+                document.addEventListener('touchstart', () => vid.play(), { once: true });
+            });
+        };
+        if (vid.paused) tryPlay();
+    }
+</script>
+</body>
+</html>
